@@ -1,0 +1,62 @@
+﻿
+body {
+    background-color: rgb(74,94,113);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.row, .article-left {
+    padding: 0;
+    margin: 0;
+}
+
+.article-right {
+    background-color: #FFF;
+    padding-top: 30px;
+}
+
+ul li {
+    text-transform: Uppercase;
+    font-size: 1em;
+    padding: 15px;
+}
+
+    ul li a {
+        color: #FFF;
+        text-decoration: none;
+    }
+
+a:hover {
+    color: #DDD;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    padding-top: 15px;
+}
+
+h2 {
+    background-color: rgb(64,84,103);
+    padding: 15px;
+}
+
+.title {
+    background-color: rgb(44,64,83);
+    padding: 10px;
+}
+
+ul li, .fa, h2, h3 {
+    color: #FFF;
+}
+
+.fa {
+    padding-right: 20px;
+}
+
+header .fa {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+

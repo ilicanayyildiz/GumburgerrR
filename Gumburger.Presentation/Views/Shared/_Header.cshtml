@@ -1,0 +1,100 @@
+﻿
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container-item min-vw-100">
+        <nav class="navbar navbar-expand-sm">
+            <a href="#" class="navbar-brand text-white">
+                <h2>GumBurger</h2>
+            </a>
+
+            <button class="navbar-toggler navbar-dark"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-action="Index" asp-controller="Home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-action="Index" asp-controller="Menu">MENÜLER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-action="Index" asp-controller="Extra">EKSTRALAR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-action="Index" asp-controller="Home">HAKKIMIZDA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-action="Customers" asp-controller="Admin">ADMIN</a>
+                    </li>
+                </ul>
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="user-account">
+                        <a asp-action="EditProfile" asp-controller="Account" class="user-link">
+                            @User.Identity.Name<i class="fa fa-user ms-2"
+                                                  aria-hidden="true"
+                                                  style="color: #ffc107"></i>
+                        </a>
+                        <a asp-action="Index" asp-controller="Cart">
+                            <i class="fa fa-shopping-cart"
+                               aria-hidden="true"
+                               style="color: white"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-search"
+                               aria-hidden="true"
+                               style="color: white"></i>
+                        </a>
+                        <a asp-action="Logout" asp-controller="Account">
+                            <i class="fa fa-sign-out"
+                               aria-hidden="true"
+                               style="color: white"></i>
+                        </a>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="user-account">
+                        <a asp-action="Login" asp-controller="Account" class="user-link">
+                            <i class="fa fa-user"
+                               aria-hidden="true"
+                               style="color: white"></i>
+                        </a>
+                        <a asp-action="Index" asp-controller="Cart">
+                            <i class="fa fa-shopping-cart"
+                               aria-hidden="true"
+                               style="color: white"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-search"
+                               aria-hidden="true"
+                               style="color: white"></i>
+                        </a>
+                    </div>
+                }
+
+                <a asp-action="Index" asp-controller="Menu" id="btn-cart" class="btn btn-warning text-white text-center p-2 ps-4 pe-4 ms-4 rounded-4">SİPARİŞ VER</a>
+
+
+            </div>
+        </nav>
+    </div>
+
+
+</body>}

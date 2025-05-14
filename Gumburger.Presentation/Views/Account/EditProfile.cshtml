@@ -1,0 +1,84 @@
+﻿@using Gumburger.Application.Models.DTOs;
+@model UpdateProfileDTO
+
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "~/Views/Shared/_LoginRegisterLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/editProfile.css">
+    <title>Edit Profile</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="title">Profilini Düzenle</div>
+
+        <form asp-action="EditProfile" method="post" enctype="multipart/form-data" class="content">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Adınız</span>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Soyadınız</span>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Şifre</span>
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Şifre Onay</span>
+                    <input asp-for="ConfirmedPassword" type="password" class="form-control" />
+                    <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+                </div>
+
+                @*<div class="input-box">
+                <span class="details">Profile Image</span>
+                <input asp-for="UploadPath" type="file" class="form-control" />
+                <span asp-validation-for="UploadPath" class="text-danger"></span>
+                </div>*@
+            </div>
+
+            <div class="button">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+
+        </form>
+
+
+        <div class="navigation-links">
+            <a asp-action="Index" asp-controller="Address">
+                <button class="btn btn-primary">Address</button>
+            </a>
+
+            <a asp-action="Index" asp-controller="Order">
+                <button class="btn btn-primary">Siparişlerim</button>
+            </a>
+            <a asp-action="Index" asp-controller="Home">
+                <button class="btn btn-primary">Home</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

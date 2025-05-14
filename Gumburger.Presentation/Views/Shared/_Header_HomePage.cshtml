@@ -1,0 +1,106 @@
+﻿
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+</head>
+<body>
+    <div class="box">
+        <div class="container-item">
+            <nav class="navbar navbar-expand-sm">
+                <a href="#" class="navbar-brand text-white">
+                    <img class="img-fluid"
+                             style="width: 200px"
+                         src="https://cdn.discordapp.com/attachments/702867430938247310/1336959604818579487/image0_0_-_Kopya-photoaidcom--photoaid-remove-background.png?ex=67a5b429&is=67a462a9&hm=3ef397c36473b4bc958ee38e351cf2da3df497a991df74b8e4ecaf1738211cca&"
+                             alt="" />
+                </a>
+
+                <button class="navbar-toggler navbar-dark"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Home">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Menu">MENULER</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Extra">EKSTRALAR</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Home">HAKKIMIZDA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-action="Customers" asp-controller="Admin">ADMIN</a>
+                        </li>
+                    </ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="user-account">
+                            <a asp-action="EditProfile" asp-controller="Account" class="user-link">
+                                @User.Identity.Name<i class="fa fa-user ms-2"
+                                                      aria-hidden="true"
+                                                      style="color: #ffc107"></i>
+                            </a>
+                            <a asp-action="Index" asp-controller="Cart">
+                                <i class="fa fa-shopping-cart"
+                                   aria-hidden="true"
+                                   style="color: white"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-search"
+                                   aria-hidden="true"
+                                   style="color: white"></i>
+                            </a>
+                            <a asp-action="Logout" asp-controller="Account">
+                                <i class="fa fa-sign-out"
+                                   aria-hidden="true"
+                                   style="color: white"></i>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="user-account">
+                            <a asp-action="Login" asp-controller="Account" class="user-link">
+                                <i class="fa fa-user"
+                                   aria-hidden="true"
+                                   style="color: white"></i>
+                            </a>
+                            <a asp-action="Index" asp-controller="Cart">
+                                <i class="fa fa-shopping-cart"
+                                   aria-hidden="true"
+                                   style="color: white"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-search"
+                                   aria-hidden="true"
+                                   style="color: white"></i>
+                            </a>
+                        </div>
+                    }
+
+                    <a asp-action="Index" asp-controller="Menu" id="btn-cart" class="btn btn-warning text-white text-center p-2 ps-4 pe-4 ms-4 rounded-4">SİPARİŞ </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+</body>
+
+
+
+
+
+
+
+

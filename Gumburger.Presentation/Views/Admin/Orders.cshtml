@@ -1,0 +1,107 @@
+﻿@using Gumburger.Application.Models.DTOs;
+@using Gumburger.Application.Models.VMs;
+
+
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+@model List<OrderVM>
+
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $(".date").closest("td").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+<body>
+
+    <header>
+        <h2>
+            Admin Dashboard
+            <a asp-action="Logout" asp-controller="Account"><i class="fa fa-sign-out float-end"></i></a>
+            <a asp-action="EditProfile" asp-controller="Account"><i class="fa fa-user float-end"></i></a>
+        </h2>
+    </header>
+
+    @if (Model != null)
+    {
+        int count = 1;
+        <section class="row">
+            <article class="col-md-3 col-lg-2 article-left">
+
+                <h2 class="text-center title">Order List</h2>
+                <ul class="fa-ul">
+
+                    <li><i class="fa fa-list" aria-hidden="true"></i><a asp-action="Menus" asp-controller="Admin">MENUS</a></li>
+                    <li><i class="fa fa-list" aria-hidden="true"></i><a asp-action="Extras" asp-controller="Admin">EXTRAS</a></li>
+                    <li><i class="fa fa-user-o" aria-hidden="true"></i><a asp-action="Customers" asp-controller="Admin">CUSTOMERS</a></li>
+                    <li><i class="fa fa-rocket" aria-hidden="true"></i><a asp-action="Orders" asp-controller="Admin">ORDERS</a></li>
+                    <li><i class="fa fa-pie-chart" aria-hidden="true"></i><a href="#">Statistics</a></li>
+                    <li><i class="fa fa-cogs" aria-hidden="true"></i><a href="#">Settings</a></li>
+                    <li><i class="fa fa-line-chart" aria-hidden="true"></i><a href="#">Analytics</a></li>
+                    <li><i class="fa fa-facebook" aria-hidden="true"></i><a href="#">Social</a></li>
+                    <li><i class="fa fa-rss" aria-hidden="true"></i><a href="#">Feedback</a></li>
+                </ul>
+            </article>
+            <article class="col-md-10 article-right">
+
+                <h1>Order List</h1>
+                <div class="search-bar" style="display:flex">
+                    <input type="text" id="searchInput" placeholder="Search by Order Date"><i class="fas fa-search mt-2"></i>
+
+                </div>
+                <hr>
+
+                <table class="table table-striped table-bordered w-100">
+                    <thead>
+                        <tr>
+
+                            <th>Number</th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Order Status</th>
+                            <th class="date">Order Date</th>
+                            <th class="date">ShippedDate</th>
+                            <th>Quantity</th>
+                            <th>Notes</th>
+                            <th>ShippedAddress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>@count</td>
+                                    <td>@item.OrderId</td>
+                                    <td>@item.CustomerFullName</td>
+                                    <td>@item.OrderStatus</td>
+                                    <td>@item.OrderDate</td>
+                                    <td>@item.ShippedDate</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Notes</td>
+                                    <td>@item.ShippedAddress</td>
+
+                                </tr>
+                                count++;
+                            }
+                        }
+                    </tbody>
+                </table>
+
+            </article>
+        </section>
+    }
+
+</body>

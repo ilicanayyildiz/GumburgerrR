@@ -1,0 +1,88 @@
+﻿@using Gumburger.Domain.Entities.Concrete;
+@using Gumburger.Domain.Enums;
+@model AppUser
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+
+  <h1>Edit</h1>
+    <hr />
+<div class="container">
+
+
+
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+            <div class="form-group">
+                <img src="@Model.ProfileImagePath" alt="category-item-picture">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProfileImagePath" class="control-label"></label>
+                    <input asp-for="ProfileImagePath" class="form-control" />
+                    <span asp-validation-for="ProfileImagePath" class="text-danger"></span>
+                <a asp-action="UploadPicture" asp-controller="Admin" asp-route-MenuId="@Model.Id">
+                    <button class="btn btn-dark btn-sm d-inline-flex m-3">Upload Picture</button>
+                </a> <a asp-action="DeletePicture" asp-controller="Admin" asp-route-MenuId="@Model.Id">
+                    <button class="btn btn-secondary btn-sm d-inline-flex m-3">Delete Picture</button>
+                </a>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary m-3" asp-action="EditCustomer" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Customers">Back to List</a>
+</div>
+
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

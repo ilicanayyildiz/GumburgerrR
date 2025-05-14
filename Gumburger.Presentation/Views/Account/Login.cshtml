@@ -1,0 +1,71 @@
+﻿@using Gumburger.Application.Models.DTOs
+@model LoginDTO
+
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "~/Views/Shared/_LoginRegisterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body class="fs-5">
+    <img class="img-fluid"
+         style="width: 400px"
+         src="https://i.imgur.com/ufDo5C1.png"
+         alt="" />
+    </a>
+    <div class="row flex-column container">
+        <h2>Giris</h2>
+
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Login" asp-controller="Account" method="post">
+
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Password">Şifre</label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                     <div class="form-group">
+                    <label asp-for="RememberMe">Beni Hatırla</label>
+                    <input asp-for="RememberMe" type="checkbox" />
+                </div> 
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group d-grid mt-4">
+                        <input type="submit" value="Giriş" class="btn btn-primary mb-3 d-block fs-5" />
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <p>
+                            <a asp-controller="Account" asp-action="Register">Hesabın mı yok? Tıkla ve Katıl!</a>
+                        </p>
+                    </div>
+                    <input type="hidden" asp-for="ReturnUrl" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+</body>
+</html>

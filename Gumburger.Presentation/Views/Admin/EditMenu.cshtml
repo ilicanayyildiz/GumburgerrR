@@ -1,0 +1,103 @@
+﻿@using Gumburger.Application.Models.DTOs;
+@using Gumburger.Domain.Enums;
+@model MenuDTO
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+@{
+    List<MenuSize> menuSizeList = Enum.GetValues(typeof(MenuSize)).Cast<MenuSize>().ToList();
+    List<Status> menuStatus = Enum.GetValues(typeof(Status)).Cast<Status>().ToList();
+}
+
+
+
+<div class="row flex-column container ps-5">
+    <h1>Edit</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="EditMenu" asp-controller="Admin">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="MenuName" class="control-label"></label>
+                    <input asp-for="MenuName" class="form-control" disabled />
+                    <span asp-validation-for="MenuName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MenuSize" class="control-label"></label>
+                    <select name="MenuSize" id="menuSizes" class="form-select menuSizes" data-MenuSize="@Model.MenuSize" disabled>
+                        @foreach (var size in menuSizeList)
+                        {
+                            <option value="@size">@size</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+                    <select name="Status" class="form-select" data-MenuStatus="@Model.Status">
+                        @foreach (var status in menuStatus)
+                        {
+                            if (status == Model.Status)
+                            {
+                                <option selected value="@status">@status</option>
+
+                            }
+                            else
+                            {
+                                <option value="@status">@status</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="MenuPrice" class="control-label"></label>
+                    <input value="@Model.MenuPrice" asp-for="MenuPrice" class="form-control" required />
+                    <span asp-validation-for="MenuPrice" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <img src="@Model.MenuImagePath" alt="category-item-picture">
+                </div>
+
+                <div class="form-group">
+                    @* <label asp-for="MenuImagePath" class="control-label"></label>
+                    <input asp-for="MenuImagePath" class="form-control" />
+                    <span asp-validation-for="MenuImagePath" class="text-danger"></span> *@
+                    <a asp-action="UploadPicture" asp-controller="Admin" asp-route-MenuId="@Model.Id">
+                        <button class="btn btn-dark btn-sm d-inline-flex m-3">Upload Picture</button>
+                    </a> <a asp-action="DeletePicture" asp-controller="Admin" asp-route-MenuId="@Model.Id">
+                        <button class="btn btn-secondary btn-sm d-inline-flex m-3">Delete Picture</button>
+                    </a>
+                </div>
+
+
+
+
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary m-3" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Menus">Back to List</a>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

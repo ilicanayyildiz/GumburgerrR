@@ -1,0 +1,2 @@
+ADMIN:admin@admin.com
+Şifre:Admin123+
